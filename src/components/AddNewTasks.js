@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import Modal from './Modal';
+import { Bell } from 'react-bootstrap-icons';
 
 function AddNewTasks () {
 
   const [showModal, setShowModal] = useState(false);
+  const [text, setText] = useState('');
 
   return (
     <div className='AddNewTodo'>
@@ -14,11 +16,22 @@ function AddNewTasks () {
       </div>
 
       <Modal showModal={showModal} setShowModal={setShowModal}>
-        <div>
-          Hello world!
-        </div>
-
-        <button onClick={() => setShowModal(false)}>Hide</button>
+        <form>
+          <div className='text'>
+            <h3>Add New Task!</h3>
+            <input 
+              type='text'
+              value={text}
+              onChange={e => setText(e.target.value)}
+              placeholder='To do ...'
+              autoFocus
+            />
+          </div>
+          <div className='remind'>
+            <Bell />
+            <p>Remind Me!</p>
+          </div>
+        </form>
       </Modal>
     </div>
   )
